@@ -1,0 +1,20 @@
+{
+  "name": "v40-toucans-team-10-project",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint --ext .js"
+  },
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^12.9.0",
+    "eslint": "^8.22.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
+    "vite": "^2.9.15"
+  }
+}
