@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html {
@@ -11,18 +11,19 @@ html {
 }
 
 body {
-  font-family: "Roboto Mono", monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: 'Roboto Mono', monospace;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 footer {
-  display: none;
+	display: none;
 }
 
 @media only screen and (min-width: 768px) {
-  footer {
-    display: block;
-    height: 20vh;
-  }
+	footer {
+		display: block;
+		height: 20vh;
+		padding: 2em;
+	}
 }
