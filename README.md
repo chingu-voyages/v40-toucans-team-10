@@ -1,5 +1,7 @@
 # Chingu Voyage 40 Toucans Team 10
 
+# TODO: About the project
+
 ## Instructions:
 
 **To install the dependencies**:
