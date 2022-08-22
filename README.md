@@ -14,7 +14,7 @@ npm install
 npm run lint
 ```
 
-**To start it in development**:
+**To start the server in development**:
 
 ```cmd
 npm run dev
