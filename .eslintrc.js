@@ -16,6 +16,11 @@ module.exports = {
 		sourceType: 'module',
 	},
 	rules: {
-		'prettier/prettier': 'error',
+		'prettier/prettier': [
+			'error',
+			{
+				endOfLine: 'auto',
+			},
+		],
 	},
 };
