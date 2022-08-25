@@ -59,6 +59,54 @@ footer {
 	display: none;
 }
 
+/* info CSS */
+
+main {
+  padding: 5em;
+}
+
+.description {
+  margin-bottom: 5rem;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+  margin: 0 auto;
+}
+
+.card {
+  border: #1f1f1f solid 1.5px;
+  border-radius: 8px;
+  padding: 2rem 3rem;
+  max-width: 500px;
+  justify-self: center;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
+.profile-svg {
+  margin-right: 1.5rem;
+}
+
+.card-name {
+  margin-bottom: 0.3em;
+}
+
+.card-links {
+  margin-top: 0;
+}
+
+.card-description {
+  font-size: 1.3em;
+}
+
 @media only screen and (min-width: 768px) {
 	nav {
 		flex-direction: column;
@@ -86,4 +134,13 @@ footer {
 		height: 20vh;
 		padding: 2em;
 	}
+
+  /* info CSS */
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+  }
+
+  
 }
+
