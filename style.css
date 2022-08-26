@@ -34,10 +34,10 @@ li {
 	list-style: none;
 }
 
-h1,
+/* h1,
 h2 {
 	font-weight: 400;
-}
+} */
 
 /* navigation */
 nav {
@@ -112,6 +112,8 @@ nav {
 
 /* theme */
 .main-container {
+	display: flex;
+	flex-direction: column;
 	margin: 0 1em;
 }
 
@@ -119,21 +121,26 @@ nav {
 	width: 100%;
 	border: 1px solid #000;
 	border-radius: 8px;
-	padding: 10px 16px;
+	padding: 2em 1em;
 	overflow: hidden;
 	margin-bottom: 20px;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .main-item .color-item {
-	padding: 0 10px;
+	padding: 0 0.75em;
 	text-align: center;
 }
 
 .main-item .color-item svg {
 	max-width: 70%;
 }
+/* info */
 
+.info-header {
+	margin-bottom: 1em;
+}
+/* buttons */
 .btn {
 	float: right;
 	width: 200px;
@@ -145,6 +152,41 @@ nav {
 	box-shadow: 0px 2px 0px #000000;
 }
 
+.save-btn {
+	padding: 1em 0em;
+	min-height: 5em;
+	align-self: center;
+}
+
+.add-note {
+	text-align: center;
+	cursor: pointer;
+}
+
+input[type='text'],
+textarea {
+	font-family: inherit;
+	font-size: 2rem;
+	width: 100%;
+	padding: 1em 2.25em;
+	margin: 0.25em;
+	resize: none;
+}
+
+textarea {
+	min-width: 100%;
+	min-height: 20em;
+}
+
+/* note classes */
+
+.note-title {
+	padding: 0.5em 0;
+}
+
+.note-category {
+	padding: 1em 0;
+}
 /* footer */
 footer {
 	display: none;
@@ -263,12 +305,11 @@ main {
 		display: none;
 	}
 
-	/* theme */
 	.main-container {
 		width: 100%;
 		margin: 4.5em 0;
 		padding: 0 7em;
-		display: flex;
+		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		overflow: hidden;
@@ -278,6 +319,8 @@ main {
 		width: 48%;
 		margin-bottom: 36px;
 	}
+
+	/* buttons */
 
 	.btn {
 		float: right;
