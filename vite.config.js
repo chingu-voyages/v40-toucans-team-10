@@ -15,6 +15,7 @@ export default defineConfig({
 				faq: resolve(root, 'faq.html'),
 				info: resolve(root, 'info.html'),
 				theme: resolve(root, 'theme.html'),
+				add: resolve(root, 'add.html'),
 			},
 		},
 	},

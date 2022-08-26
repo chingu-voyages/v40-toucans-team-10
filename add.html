@@ -11,10 +11,10 @@
 		<header>
 			<nav>
 				<ul class="nav-container">
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a href="/" class="nav-link">My notes</a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a href="./faq.html" class="nav-link">FAQ</a>
 					</li>
 					<li class="nav-item">
@@ -75,7 +75,12 @@
 			</div>
 		</header>
 		<main>
-			<h1>TODO: FAQs</h1>
+			<section class="main-container">
+				<input type="text" class="main-item" id="title" />
+				<input type="text" class="main-item" id="category" />
+				<textarea class="main-item" id="description"></textarea>
+				<button class="btn save-btn">Save Note</button>
+			</section>
 		</main>
 		<footer>
 			<h2>Made by Toucans 10 of Chingu Voyage 40</h2>
