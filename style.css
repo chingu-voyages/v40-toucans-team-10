@@ -192,6 +192,37 @@ footer {
 	display: none;
 }
 
+/* faq CSS */
+
+.faq-container {
+  padding: 0 5rem;
+}
+
+.question-container {
+  margin-bottom: 1rem;
+}
+
+.question {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.question::before {
+  content: '►';
+  margin-right: 0.3em;
+}
+
+.hideAnswer {
+  display: none;
+}
+
+.showAnswer {
+  display: block;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  font-size: 1.5em;
+}
+
 /* info CSS */
 
 main {

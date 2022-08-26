@@ -80,3 +80,18 @@ menuOnBtn.addEventListener('click', () => {
 menuOffBtn.addEventListener('click', () => {
 	nav.classList.remove('active');
 });
+
+// faq question toggle
+const questions = document.querySelectorAll('.question');
+const questionsArray = [...questions];
+
+questionsArray.forEach((question) =>
+	question.addEventListener('click', function accordion() {
+		const answerEl = this.nextElementSibling;
+		if (answerEl.className === 'hideAnswer') {
+			answerEl.className = 'showAnswer';
+		} else {
+			answerEl.className = 'hideAnswer';
+		}
+	})
+);
