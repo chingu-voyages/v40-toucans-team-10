@@ -106,6 +106,7 @@ const themeData = {
 };
 
 const themeSelectBtn = document.querySelectorAll('.btn');
+// eslint-disable-next-line no-use-before-define
 for (let i = 0; i < themeSelectBtn.length; i++) {
 	// eslint-disable-next-line no-use-before-define
 	themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
@@ -129,6 +130,7 @@ function changeTheme(e) {
 	const themeId = e.target.id;
 
 	// class change
+	// eslint-disable-next-line no-use-before-define
 	for (let i = 0; i < themeSelectBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
 		themeSelectBtn[i].classList.remove('themecheck');
@@ -148,3 +150,18 @@ function changeTheme(e) {
 		setTheme(themeData.theme4);
 	}
 }
+
+// faq question toggle
+const questions = document.querySelectorAll('.question');
+const questionsArray = [...questions];
+
+questionsArray.forEach((question) =>
+	question.addEventListener('click', function accordion() {
+		const answerEl = this.nextElementSibling;
+		if (answerEl.className === 'hideAnswer') {
+			answerEl.className = 'showAnswer';
+		} else {
+			answerEl.className = 'hideAnswer';
+		}
+	})
+);
