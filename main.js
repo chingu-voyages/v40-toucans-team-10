@@ -80,3 +80,61 @@ menuOnBtn.addEventListener('click', () => {
 menuOffBtn.addEventListener('click', () => {
 	nav.classList.remove('active');
 });
+
+// theme select
+const themeData = {
+	theme1: {
+		bgColor: '#11111',
+		fontColor: '11111',
+		btnColor: '11111',
+	},
+	theme2: {
+		bgColor: '#11111',
+		fontColor: '11111',
+		btnColor: '11111',
+	},
+	theme3: {
+		bgColor: '#11111',
+		fontColor: '11111',
+		btnColor: '11111',
+	},
+	theme4: {
+		bgColor: '#11111',
+		fontColor: '11111',
+		btnColor: '11111',
+	},
+};
+
+// const theme1 = {
+// 	bgColor: '#11111',
+// 	fontColor: '11111',
+// 	btnColor: '11111',
+// };
+
+const themeSelectBtn = document.querySelectorAll('.btn');
+for (let i = 0; i < themeSelectBtn.length; i++) {
+	// eslint-disable-next-line no-use-before-define
+	themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
+}
+
+function changeTheme(e) {
+	console.log(e.target.id);
+	const themeId = e.target.id;
+	for (let i = 0; i < themeSelectBtn.length; i++) {
+		// eslint-disable-next-line no-use-before-define
+		themeSelectBtn[i].classList.remove('themecheck');
+	}
+	themeSelectBtn[themeId - 1].classList.add('themecheck');
+	if (themeId === '1') {
+		console.log('theme1');
+		setTheme(themeData.theme1);
+	} else if (themeId === '2') {
+		console.log('theme2');
+	} else if (themeId === '3') {
+		console.log('theme3');
+	} else {
+		console.log('theme4');
+	}
+}
+
+function setTheme(themeData) {}
