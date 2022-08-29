@@ -84,32 +84,26 @@ menuOffBtn.addEventListener('click', () => {
 // theme select
 const themeData = {
 	theme1: {
-		bgColor: '#11111',
-		fontColor: '11111',
-		btnColor: '11111',
+		bgColor: '#FFFFFE',
+		fontColor: '#272343',
+		btnColor: '#FFD803',
 	},
 	theme2: {
-		bgColor: '#11111',
-		fontColor: '11111',
-		btnColor: '11111',
+		bgColor: '#FFC0AD',
+		fontColor: '#271C19',
+		btnColor: '#E78FB3',
 	},
 	theme3: {
-		bgColor: '#11111',
-		fontColor: '11111',
-		btnColor: '11111',
+		bgColor: '#B8C1EC',
+		fontColor: '#121629',
+		btnColor: '#EEBBC3',
 	},
 	theme4: {
-		bgColor: '#11111',
-		fontColor: '11111',
-		btnColor: '11111',
+		bgColor: '#FEC7D7',
+		fontColor: '#FEC7D7',
+		btnColor: '#A786DF',
 	},
 };
-
-// const theme1 = {
-// 	bgColor: '#11111',
-// 	fontColor: '11111',
-// 	btnColor: '11111',
-// };
 
 const themeSelectBtn = document.querySelectorAll('.btn');
 for (let i = 0; i < themeSelectBtn.length; i++) {
@@ -117,24 +111,40 @@ for (let i = 0; i < themeSelectBtn.length; i++) {
 	themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
 }
 
-function changeTheme(e) {
-	console.log(e.target.id);
-	const themeId = e.target.id;
+function setTheme(themeInfo) {
+	document.body.style.backgroundColor = themeInfo.bgColor;
+	document.querySelector('.nav-container').style.backgroundColor =
+		themeInfo.bgColor;
+	document.body.style.color = themeInfo.fontColor;
+	// button color
 	for (let i = 0; i < themeSelectBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
-		themeSelectBtn[i].classList.remove('themecheck');
-	}
-	themeSelectBtn[themeId - 1].classList.add('themecheck');
-	if (themeId === '1') {
-		console.log('theme1');
-		setTheme(themeData.theme1);
-	} else if (themeId === '2') {
-		console.log('theme2');
-	} else if (themeId === '3') {
-		console.log('theme3');
-	} else {
-		console.log('theme4');
+		document.querySelectorAll('.btn')[i].style.backgroundColor =
+			themeInfo.btnColor;
 	}
 }
 
-function setTheme(themeData) {}
+function changeTheme(e) {
+	// console.log(e.target.id);
+	const themeId = e.target.id;
+
+	// class change
+	for (let i = 0; i < themeSelectBtn.length; i++) {
+		// eslint-disable-next-line no-use-before-define
+		themeSelectBtn[i].classList.remove('themecheck');
+		themeSelectBtn[i].innerText = 'Set theme as default';
+	}
+	themeSelectBtn[themeId - 1].classList.add('themecheck');
+	themeSelectBtn[themeId - 1].innerText = 'Current theme';
+
+	// theme change
+	if (themeId === '1') {
+		setTheme(themeData.theme1);
+	} else if (themeId === '2') {
+		setTheme(themeData.theme2);
+	} else if (themeId === '3') {
+		setTheme(themeData.theme3);
+	} else {
+		setTheme(themeData.theme4);
+	}
+}
