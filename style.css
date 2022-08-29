@@ -135,12 +135,23 @@ nav {
 .main-item .color-item svg {
 	max-width: 70%;
 }
+
 /* info */
 
 .info-header {
 	margin-bottom: 1em;
 }
 /* buttons */
+
+/* theme button hover*/
+.main-container button:hover {
+  background-color: rgb(163, 228, 228);
+}
+
+.themecheck .btn {
+  background-color: #ffd84a;
+}
+
 .btn {
 	float: right;
 	width: 200px;
@@ -150,6 +161,7 @@ nav {
 	border: 1px solid #000;
 	border-radius: 8px;
 	box-shadow: 0px 2px 0px #000000;
+  transition: background-color 100ms ease-in;
 }
 
 .save-btn {
