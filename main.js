@@ -70,6 +70,8 @@ saveBtn?.addEventListener('click', () => {
 	window.location.href = '/';
 });
 
+// upadate
+
 // menu toggle
 const menuOnBtn = document.querySelector('.bar');
 const menuOffBtn = document.querySelector('.nav-off');
@@ -81,7 +83,26 @@ menuOffBtn.addEventListener('click', () => {
 	nav.classList.remove('active');
 });
 
+// faq question toggle
+const questions = document.querySelectorAll('.question');
+const questionsArray = [...questions];
+
+questionsArray.forEach((question) =>
+	question.addEventListener('click', function accordion() {
+		const answerEl = this.nextElementSibling;
+		if (answerEl.className === 'hideAnswer') {
+			answerEl.className = 'showAnswer';
+		} else {
+			answerEl.className = 'hideAnswer';
+		}
+	})
+);
+
 // theme select
+
+// Try to store the theme in local storage,
+// then access it
+
 const themeData = {
 	theme1: {
 		bgColor: '#FFFFFE',
@@ -104,7 +125,10 @@ const themeData = {
 		btnColor: '#A786DF',
 	},
 };
-
+// if the theme is none:
+//   set the theme to the default
+// else:
+//   set the theme (e.g. bg, texts, etc.)
 const themeSelectBtn = document.querySelectorAll('.btn');
 // eslint-disable-next-line no-use-before-define
 for (let i = 0; i < themeSelectBtn.length; i++) {
@@ -150,18 +174,3 @@ function changeTheme(e) {
 		setTheme(themeData.theme4);
 	}
 }
-
-// faq question toggle
-const questions = document.querySelectorAll('.question');
-const questionsArray = [...questions];
-
-questionsArray.forEach((question) =>
-	question.addEventListener('click', function accordion() {
-		const answerEl = this.nextElementSibling;
-		if (answerEl.className === 'hideAnswer') {
-			answerEl.className = 'showAnswer';
-		} else {
-			answerEl.className = 'hideAnswer';
-		}
-	})
-);
