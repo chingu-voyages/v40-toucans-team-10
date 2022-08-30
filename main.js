@@ -1,6 +1,7 @@
 import './style.css';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+
 // Resolve User story #1 in Epic: CRUD (w/ some bugs)
 
 // Add/save/read notes variables
@@ -9,6 +10,11 @@ const mainContainerEl = document.querySelector('.main-container');
 
 let notes = localStorage.getItem('notes');
 notes = JSON.parse(notes);
+
+// random ID
+function randomIDGenerate() {
+	return '_' + Math.random().toString(36).substr(2, 9);
+}
 
 if (!notes) {
 	notes = [];
@@ -34,10 +40,11 @@ function render() {
 	// console.log('hover');
 	// });
 	notes.forEach((note) => {
-		const { title, category, description } = note;
+		const { id, title, category, description } = note;
 		// eslint-disable-next-line no-console
 		mainContainerEl.innerHTML += `
-			<div class="main-item">
+			<div class="main-item noteContent">
+      <button onclick="update(${id})" type="button">update</button>
 				<div class="note-title">
 					<h1 class="">${title}</h1>
 				</div>
@@ -54,6 +61,7 @@ if (window.location.pathname === '/') {
 	`;
 	render();
 }
+
 // process the data and save it in local storage
 saveBtn?.addEventListener('click', () => {
 	const titleEl = document.getElementById('title');
@@ -61,6 +69,7 @@ saveBtn?.addEventListener('click', () => {
 	const descriptionEl = document.getElementById('description');
 
 	const data = {
+		id: randomIDGenerate(),
 		title: titleEl.value,
 		category: categoryEl.value,
 		description: descriptionEl.value,
@@ -69,8 +78,6 @@ saveBtn?.addEventListener('click', () => {
 	localStorage.setItem('notes', JSON.stringify(notes));
 	window.location.href = '/';
 });
-
-// upadate
 
 // menu toggle
 const menuOnBtn = document.querySelector('.bar');
@@ -173,4 +180,8 @@ function changeTheme(e) {
 	} else {
 		setTheme(themeData.theme4);
 	}
+}
+
+function update(id) {
+	console.log('update');
 }
