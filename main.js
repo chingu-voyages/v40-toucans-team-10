@@ -11,11 +11,6 @@ const mainContainerEl = document.querySelector('.main-container');
 let notes = localStorage.getItem('notes');
 notes = JSON.parse(notes);
 
-// random ID
-function randomIDGenerate() {
-	return '_' + Math.random().toString(36).substr(2, 9);
-}
-
 if (!notes) {
 	notes = [];
 }
@@ -44,7 +39,7 @@ function render() {
 		// eslint-disable-next-line no-console
 		mainContainerEl.innerHTML += `
 			<div class="main-item noteContent">
-      <button onclick="update(${id})" type="button">update</button>
+      <button class="deleteBtn" id="${id}" type="button">delete</button>
 				<div class="note-title">
 					<h1 class="">${title}</h1>
 				</div>
@@ -78,6 +73,13 @@ saveBtn?.addEventListener('click', () => {
 	localStorage.setItem('notes', JSON.stringify(notes));
 	window.location.href = '/';
 });
+
+// delete note
+const deleteBtn = document.querySelector('.deleteBtn');
+deleteBtn.addEventListener('click', deleteNote);
+function deleteNote() {
+	console.log('click');
+}
 
 // menu toggle
 const menuOnBtn = document.querySelector('.bar');
@@ -182,6 +184,7 @@ function changeTheme(e) {
 	}
 }
 
-function update(id) {
-	console.log('update');
+// random ID
+function randomIDGenerate() {
+	return '_' + Math.random().toString(36).substr(2, 9);
 }
