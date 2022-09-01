@@ -144,11 +144,12 @@ nav {
 /* buttons */
 
 /* theme button hover*/
+
 .main-container button:hover {
   background-color: rgb(163, 228, 228);
 }
 
-.themecheck .btn {
+.btn.themecheck  {
   background-color: #ffd84a;
 }
 

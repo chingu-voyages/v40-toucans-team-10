@@ -1,6 +1,7 @@
 import './style.css';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+
 // Resolve User story #1 in Epic: CRUD (w/ some bugs)
 
 // Add/save/read notes variables
@@ -19,7 +20,7 @@ function render() {
 	console.log(notes);
 	mainContainerEl.innerHTML = `
 		<a class="add-note main-item" id="add-note" href="./add.html">
-			<img src="img/add.png" alt="Add a note" />
+			<img src="./img/add.png" alt="Add a note" />
 		</a>
 	`;
 
@@ -34,10 +35,11 @@ function render() {
 	// console.log('hover');
 	// });
 	notes.forEach((note) => {
-		const { title, category, description } = note;
+		const { id, title, category, description } = note;
 		// eslint-disable-next-line no-console
 		mainContainerEl.innerHTML += `
-			<div class="main-item">
+			<div class="main-item noteContent">
+      <button class="deleteBtn" id="${id}" type="button">delete</button>
 				<div class="note-title">
 					<h1 class="">${title}</h1>
 				</div>
@@ -54,6 +56,7 @@ if (window.location.pathname === '/') {
 	`;
 	render();
 }
+
 // process the data and save it in local storage
 saveBtn?.addEventListener('click', () => {
 	const titleEl = document.getElementById('title');
@@ -61,6 +64,7 @@ saveBtn?.addEventListener('click', () => {
 	const descriptionEl = document.getElementById('description');
 
 	const data = {
+		id: randomIDGenerate(),
 		title: titleEl.value,
 		category: categoryEl.value,
 		description: descriptionEl.value,
@@ -69,6 +73,29 @@ saveBtn?.addEventListener('click', () => {
 	localStorage.setItem('notes', JSON.stringify(notes));
 	window.location.href = '/';
 });
+
+// delete note
+const deleteBtn = document.querySelectorAll('.deleteBtn');
+console.log(deleteBtn);
+for (let i = 0; i < deleteBtn.length; i++) {
+	deleteBtn[i].addEventListener('click', (e) => deleteNote(e));
+}
+
+function deleteNote(e) {
+	let themeId = e.target.id;
+	console.log(themeId);
+	for (let i = 0; i < notes.length; i++) {
+		if (themeId === notes[i].id) {
+			console.log(notes[i]);
+			notes.splice(i, 1);
+			console.log(notes);
+			// localStorage.setItem('notes', JSON.stringify(notes));
+			break;
+		}
+	}
+	console.log(notes);
+	render();
+}
 
 // menu toggle
 const menuOnBtn = document.querySelector('.bar');
@@ -95,3 +122,86 @@ questionsArray.forEach((question) =>
 		}
 	})
 );
+
+// theme select
+
+// Try to store the theme in local storage,
+// then access it
+
+const themeData = {
+	theme1: {
+		bgColor: '#FFFFFE',
+		fontColor: '#272343',
+		btnColor: '#FFD803',
+	},
+	theme2: {
+		bgColor: '#FFC0AD',
+		fontColor: '#271C19',
+		btnColor: '#E78FB3',
+	},
+	theme3: {
+		bgColor: '#B8C1EC',
+		fontColor: '#121629',
+		btnColor: '#EEBBC3',
+	},
+	theme4: {
+		bgColor: '#FEC7D7',
+		fontColor: '#FEC7D7',
+		btnColor: '#A786DF',
+	},
+};
+const themeSelectBtn = document.querySelectorAll('.btn');
+// if the theme is none:
+//   set the theme to the default
+// else:
+//   set the theme (e.g. bg, texts, etc.)
+
+// eslint-disable-next-line no-use-before-define
+for (let i = 0; i < themeSelectBtn.length; i++) {
+	// eslint-disable-next-line no-use-before-define
+	themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
+}
+
+function setTheme(themeInfo) {
+	document.body.style.backgroundColor = themeInfo.bgColor;
+	document.querySelector('.nav-container').style.backgroundColor =
+		themeInfo.bgColor;
+	document.body.style.color = themeInfo.fontColor;
+	// button color
+	for (let i = 0; i < themeSelectBtn.length; i++) {
+		// eslint-disable-next-line no-use-before-define
+		document.querySelectorAll('.btn')[i].style.backgroundColor =
+			themeInfo.btnColor;
+	}
+}
+
+function changeTheme(e) {
+	// console.log(e.target.id);
+	const themeId = e.target.id;
+
+	// class change
+	// eslint-disable-next-line no-use-before-define
+	for (let i = 0; i < themeSelectBtn.length; i++) {
+		// eslint-disable-next-line no-use-before-define
+		themeSelectBtn[i].classList.remove('themecheck');
+		themeSelectBtn[i].innerText = 'Set theme as default';
+	}
+	themeSelectBtn[themeId - 1].classList.add('themecheck');
+	themeSelectBtn[themeId - 1].innerText = 'Current theme';
+
+	// theme change
+	if (themeId === '1') {
+		setTheme(themeData.theme1);
+	} else if (themeId === '2') {
+		setTheme(themeData.theme2);
+	} else if (themeId === '3') {
+		setTheme(themeData.theme3);
+	} else {
+		setTheme(themeData.theme4);
+	}
+}
+
+// random ID
+function randomIDGenerate() {
+	return '_' + Math.random().toString(36).substr(2, 9);
+}
