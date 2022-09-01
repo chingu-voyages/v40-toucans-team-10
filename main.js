@@ -48,6 +48,7 @@ function render() {
 			</div>
 		`;
 	});
+  renderDeleteBtn();
 }
 
 if (window.location.pathname === '/') {
@@ -75,10 +76,12 @@ saveBtn?.addEventListener('click', () => {
 });
 
 // delete note
-const deleteBtn = document.querySelectorAll('.deleteBtn');
-console.log(deleteBtn);
-for (let i = 0; i < deleteBtn.length; i++) {
-	deleteBtn[i].addEventListener('click', (e) => deleteNote(e));
+function renderDeleteBtn() {
+	const deleteBtn = document.querySelectorAll('.deleteBtn');
+	console.log(deleteBtn);
+	for (let i = 0; i < deleteBtn.length; i++) {
+		deleteBtn[i].addEventListener('click', (e) => deleteNote(e));
+	}
 }
 
 function deleteNote(e) {
