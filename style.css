@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
+:root {
+  --dark: #1f1f1f;
+}
+
 *,
 *::before,
 *::after {
@@ -12,14 +16,18 @@
 html {
 	font-size: 62.5%;
 }
-:root {
-	--dark: #1f1f1f;
-}
 
 body {
 	font-family: 'Roboto Mono', monospace;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5em;
 }
 
 button {
@@ -96,7 +104,6 @@ nav {
 }
 
 /* mobile-header */
-
 .mobile-header {
 	margin: 0 1em;
 	padding: 2em 0;
@@ -124,7 +131,7 @@ nav {
 	padding: 2em 1em;
 	overflow: hidden;
 	margin-bottom: 20px;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 0px #000000;
 }
 
 .main-item .color-item {
@@ -137,14 +144,13 @@ nav {
 }
 
 /* info */
-
 .info-header {
 	margin-bottom: 1em;
 }
+
 /* buttons */
 
 /* theme button hover*/
-
 .main-container button:hover {
   background-color: rgb(163, 228, 228);
 }
@@ -195,7 +201,6 @@ textarea {
 }
 
 /* note classes */
-
 .note-title {
 	padding: 0.5em 0;
 }
@@ -203,15 +208,16 @@ textarea {
 .note-category {
 	padding: 1em 0;
 }
+
 /* footer */
 footer {
 	display: none;
 }
 
 /* faq CSS */
-
 .faq-container {
   padding: 0 5rem;
+  align-self: flex-start;
 }
 
 .question-container {
@@ -240,11 +246,6 @@ footer {
 }
 
 /* info CSS */
-
-main {
-  padding: 5em;
-}
-
 .description {
   margin-bottom: 5rem;
   text-align: center;
@@ -254,8 +255,7 @@ main {
 .cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2em;
-  margin: 0 auto;
+  gap: 5em;
 }
 
 .card {
@@ -263,7 +263,12 @@ main {
   border-radius: 8px;
   padding: 2rem 3rem;
   max-width: 500px;
-  justify-self: center;
+  min-height: 150px;
+  width: 100%;
+  box-shadow: 0px 2px 0px #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .card-header {
@@ -276,7 +281,7 @@ main {
 }
 
 .card-name {
-  margin-bottom: 0.3em;
+  margin-bottom: 0.3rem;
 }
 
 .card-links {
@@ -285,7 +290,7 @@ main {
 
 .card-description {
   font-size: 1.3em;
-  margin-top: 0.8rem;
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -324,7 +329,7 @@ main {
 
 	.main-container {
 		width: 100%;
-		margin: 4.5em 0;
+    max-width: 1200px;
 		padding: 0 7em;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -338,7 +343,6 @@ main {
 	}
 
 	/* buttons */
-
 	.btn {
 		float: right;
 		width: 200px;
@@ -363,7 +367,5 @@ main {
     grid-template-columns: 1fr 1fr;
     max-width: 1200px;
   }
-
-  
 }
 
