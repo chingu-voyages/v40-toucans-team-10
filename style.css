@@ -285,6 +285,7 @@ main {
 
 .card-description {
   font-size: 1.3em;
+  margin-top: 0.8rem;
 }
 
 @media only screen and (min-width: 768px) {
