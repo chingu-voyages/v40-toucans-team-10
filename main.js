@@ -20,7 +20,7 @@ function render() {
 	console.log(notes);
 	mainContainerEl.innerHTML = `
 		<a class="add-note main-item" id="add-note" href="./add.html">
-			<img src="img/add.png" alt="Add a note" />
+			<img src="./img/add.png" alt="Add a note" />
 		</a>
 	`;
 
@@ -75,10 +75,26 @@ saveBtn?.addEventListener('click', () => {
 });
 
 // delete note
-const deleteBtn = document.querySelector('.deleteBtn');
-deleteBtn.addEventListener('click', deleteNote);
-function deleteNote() {
-	console.log('click');
+const deleteBtn = document.querySelectorAll('.deleteBtn');
+console.log(deleteBtn);
+for (let i = 0; i < deleteBtn.length; i++) {
+	deleteBtn[i].addEventListener('click', (e) => deleteNote(e));
+}
+
+function deleteNote(e) {
+	let themeId = e.target.id;
+	console.log(themeId);
+	for (let i = 0; i < notes.length; i++) {
+		if (themeId === notes[i].id) {
+			console.log(notes[i]);
+			notes.splice(i, 1);
+			console.log(notes);
+			// localStorage.setItem('notes', JSON.stringify(notes));
+			break;
+		}
+	}
+	console.log(notes);
+	render();
 }
 
 // menu toggle
@@ -134,11 +150,12 @@ const themeData = {
 		btnColor: '#A786DF',
 	},
 };
+const themeSelectBtn = document.querySelectorAll('.btn');
 // if the theme is none:
 //   set the theme to the default
 // else:
 //   set the theme (e.g. bg, texts, etc.)
-const themeSelectBtn = document.querySelectorAll('.btn');
+
 // eslint-disable-next-line no-use-before-define
 for (let i = 0; i < themeSelectBtn.length; i++) {
 	// eslint-disable-next-line no-use-before-define
