@@ -20,7 +20,11 @@ function render() {
 	console.log(notes);
 	mainContainerEl.innerHTML = `
 		<a class="add-note main-item" id="add-note" href="./add.html">
-			<img src="./img/add.png" alt="Add a note" />
+			<svg alt="Add a note" width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M38.25 27H15.75" stroke="black" stroke-linecap="round"/>
+        <path d="M27 38.25V15.75" stroke="black" stroke-linecap="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M27 49.5C39.4264 49.5 49.5 39.4264 49.5 27C49.5 14.5736 39.4264 4.5 27 4.5C14.5736 4.5 4.5 14.5736 4.5 27C4.5 39.4264 14.5736 49.5 27 49.5Z" stroke="black"/>
+      </svg>
 		</a>
 	`;
 
@@ -48,6 +52,7 @@ function render() {
 			</div>
 		`;
 	});
+  renderDeleteBtn();
 }
 
 if (window.location.pathname === '/') {
@@ -75,10 +80,12 @@ saveBtn?.addEventListener('click', () => {
 });
 
 // delete note
-const deleteBtn = document.querySelectorAll('.deleteBtn');
-console.log(deleteBtn);
-for (let i = 0; i < deleteBtn.length; i++) {
-	deleteBtn[i].addEventListener('click', (e) => deleteNote(e));
+function renderDeleteBtn() {
+	const deleteBtn = document.querySelectorAll('.deleteBtn');
+	console.log(deleteBtn);
+	for (let i = 0; i < deleteBtn.length; i++) {
+		deleteBtn[i].addEventListener('click', (e) => deleteNote(e));
+	}
 }
 
 function deleteNote(e) {
