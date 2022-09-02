@@ -213,7 +213,10 @@ function changeTheme(e) {
 	}
 }
 
-// random ID
+/**
+ *	@function randomIDGenerate
+ *  @return {string} it reterns generated random ID
+ */
 function randomIDGenerate() {
 	// eslint-disable-next-line prefer-template
 	return '_' + Math.random().toString(36).substr(2, 9);
