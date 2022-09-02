@@ -16,7 +16,6 @@ if (!notes) {
 }
 
 function render() {
-	// eslint-disable-next-line no-console
 	console.log(notes);
 	mainContainerEl.innerHTML = `
 		<a class="add-note main-item" id="add-note" href="./add.html">
@@ -40,7 +39,6 @@ function render() {
 	// });
 	notes.forEach((note) => {
 		const { id, title, category, description } = note;
-		// eslint-disable-next-line no-console
 		mainContainerEl.innerHTML += `
 			<div class="main-item noteContent">
       <button class="deleteBtn" id="${id}" type="button">delete</button>
@@ -52,7 +50,8 @@ function render() {
 			</div>
 		`;
 	});
-  renderDeleteBtn();
+	// eslint-disable-next-line no-use-before-define
+	renderDeleteBtn();
 }
 
 if (window.location.pathname === '/') {
@@ -69,11 +68,13 @@ saveBtn?.addEventListener('click', () => {
 	const descriptionEl = document.getElementById('description');
 
 	const data = {
+		// eslint-disable-next-line no-use-before-define
 		id: randomIDGenerate(),
 		title: titleEl.value,
 		category: categoryEl.value,
 		description: descriptionEl.value,
 	};
+
 	notes.push(data);
 	localStorage.setItem('notes', JSON.stringify(notes));
 	window.location.href = '/';
@@ -83,14 +84,17 @@ saveBtn?.addEventListener('click', () => {
 function renderDeleteBtn() {
 	const deleteBtn = document.querySelectorAll('.deleteBtn');
 	console.log(deleteBtn);
+	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < deleteBtn.length; i++) {
+		// eslint-disable-next-line no-use-before-define
 		deleteBtn[i].addEventListener('click', (e) => deleteNote(e));
 	}
 }
 
 function deleteNote(e) {
-	let themeId = e.target.id;
+	const themeId = e.target.id;
 	console.log(themeId);
+	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
 			console.log(notes[i]);
@@ -153,7 +157,7 @@ const themeData = {
 	},
 	theme4: {
 		bgColor: '#FEC7D7',
-		fontColor: '#FEC7D7',
+		fontColor: '#000000',
 		btnColor: '#A786DF',
 	},
 };
@@ -163,7 +167,7 @@ const themeSelectBtn = document.querySelectorAll('.btn');
 // else:
 //   set the theme (e.g. bg, texts, etc.)
 
-// eslint-disable-next-line no-use-before-define
+// eslint-disable-next-line no-plusplus
 for (let i = 0; i < themeSelectBtn.length; i++) {
 	// eslint-disable-next-line no-use-before-define
 	themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
@@ -175,6 +179,7 @@ function setTheme(themeInfo) {
 		themeInfo.bgColor;
 	document.body.style.color = themeInfo.fontColor;
 	// button color
+	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < themeSelectBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
 		document.querySelectorAll('.btn')[i].style.backgroundColor =
@@ -187,7 +192,7 @@ function changeTheme(e) {
 	const themeId = e.target.id;
 
 	// class change
-	// eslint-disable-next-line no-use-before-define
+	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < themeSelectBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
 		themeSelectBtn[i].classList.remove('themecheck');
@@ -210,5 +215,6 @@ function changeTheme(e) {
 
 // random ID
 function randomIDGenerate() {
+	// eslint-disable-next-line prefer-template
 	return '_' + Math.random().toString(36).substr(2, 9);
 }
