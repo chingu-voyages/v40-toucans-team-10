@@ -142,16 +142,19 @@ function updateRenderNote() {
 	console.log(updateSaveBtn);
 	let updateData = JSON.parse(localStorage.getItem('updateNoteData'));
 	// input value
-	titleEl.value = updateData.title;
-	categoryEl.value = updateData.category;
-	descriptionEl.value = updateData.description;
+	if (updateData) {
+		titleEl.value = updateData.title;
+		categoryEl.value = updateData.category;
+		descriptionEl.value = updateData.description;
 
-	// update sava btn
-	updateSaveBtn.addEventListener('click', () => updateSave(updateData));
+		// update sava btn
+		updateSaveBtn.addEventListener('click', () => updateSave(updateData));
+	}
 }
 
 // window.location.href = '/';
 
+// update save
 function updateSave(updateData) {
 	console.log(updateData);
 	const data = {
@@ -174,12 +177,14 @@ function updateSave(updateData) {
 			// console.log('change', noteOriginData);
 			// console.log('??', JSON.parse(localStorage.getItem('notes')));
 			localStorage.setItem('notes', JSON.stringify(noteOriginData));
+			localStorage.removeItem('updateNoteData');
+
 			console.log('??', JSON.parse(localStorage.getItem('notes')));
+
 			break;
 		}
 	}
 }
-
 // render();
 
 // menu toggle
