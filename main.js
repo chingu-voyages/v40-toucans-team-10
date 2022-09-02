@@ -215,7 +215,7 @@ function changeTheme(e) {
 
 /**
  *	@function randomIDGenerate
- *  @return {string} it reterns generated random ID
+ *  @return {string} it returns generated random ID
  */
 function randomIDGenerate() {
 	// eslint-disable-next-line prefer-template
