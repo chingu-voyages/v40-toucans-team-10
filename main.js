@@ -139,28 +139,28 @@ questionsArray.forEach((question) =>
 // Try to store the theme in local storage,
 // then access it
 
-const themeData = {
-	theme1: {
+const themeData = [
+	{
 		bgColor: '#FFFFFE',
 		fontColor: '#272343',
 		btnColor: '#FFD803',
 	},
-	theme2: {
+	{
 		bgColor: '#FFC0AD',
 		fontColor: '#271C19',
 		btnColor: '#E78FB3',
 	},
-	theme3: {
+	{
 		bgColor: '#B8C1EC',
 		fontColor: '#121629',
 		btnColor: '#EEBBC3',
 	},
-	theme4: {
+	{
 		bgColor: '#FEC7D7',
 		fontColor: '#000000',
 		btnColor: '#A786DF',
 	},
-};
+];
 const themeSelectBtn = document.querySelectorAll('.btn');
 // if the theme is none:
 //   set the theme to the default
@@ -202,14 +202,21 @@ function changeTheme(e) {
 	themeSelectBtn[themeId - 1].innerText = 'Current theme';
 
 	// theme change
-	if (themeId === '1') {
-		setTheme(themeData.theme1);
-	} else if (themeId === '2') {
-		setTheme(themeData.theme2);
-	} else if (themeId === '3') {
-		setTheme(themeData.theme3);
-	} else {
-		setTheme(themeData.theme4);
+	switch (themeId) {
+		case '1':
+			setTheme(themeData[0]);
+			break;
+		case '2':
+			setTheme(themeData[1]);
+			break;
+		case '3':
+			setTheme(themeData[2]);
+			break;
+		case '4':
+			setTheme(themeData[3]);
+			break;
+		default:
+			setTheme(themeData[0]);
 	}
 }
 
