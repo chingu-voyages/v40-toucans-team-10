@@ -44,6 +44,7 @@ function render() {
 		mainContainerEl.innerHTML += `
 			<div class="main-item noteContent">
       <button class="deleteBtn" id="${id}" type="button">delete</button>
+      <button class="updateBtn" id="${id}" type="button">update</button>
 				<div class="note-title">
 					<h1 class="">${title}</h1>
 				</div>
@@ -53,6 +54,7 @@ function render() {
 		`;
 	});
 	renderDeleteBtn();
+	renderUpdateBtn();
 }
 
 if (window.location.pathname === '/') {
@@ -61,12 +63,14 @@ if (window.location.pathname === '/') {
 	`;
 	render();
 }
-
+const titleEl = document.getElementById('title');
+const categoryEl = document.getElementById('category');
+const descriptionEl = document.getElementById('description');
 // process the data and save it in local storage
 saveBtn?.addEventListener('click', () => {
-	const titleEl = document.getElementById('title');
-	const categoryEl = document.getElementById('category');
-	const descriptionEl = document.getElementById('description');
+	// const titleEl = document.getElementById('title');
+	// const categoryEl = document.getElementById('category');
+	// const descriptionEl = document.getElementById('description');
 
 	const data = {
 		id: randomIDGenerate(),
@@ -90,19 +94,90 @@ function renderDeleteBtn() {
 
 function deleteNote(e) {
 	let themeId = e.target.id;
-	console.log(themeId);
+	// console.log(themeId);
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
 			// console.log(notes[i]);
 			notes.splice(i, 1);
-			console.log(notes);
+			// console.log(notes);
 			localStorage.setItem('notes', JSON.stringify(notes));
 			break;
 		}
 	}
-	console.log(notes);
+	// console.log(notes);
 	render();
 }
+
+// update note
+function renderUpdateBtn() {
+	const updateBtn = document.querySelectorAll('.updateBtn');
+	console.log(updateBtn);
+	for (let i = 0; i < updateBtn.length; i++) {
+		updateBtn[i].addEventListener('click', (e) => updateNoteBtn(e));
+	}
+}
+
+function updateNoteBtn(e) {
+	let themeId = e.target.id;
+	console.log(themeId);
+
+	for (let i = 0; i < notes.length; i++) {
+		if (themeId === notes[i].id) {
+			console.log(notes[i]);
+
+			localStorage.setItem('updateNoteData', JSON.stringify(notes[i]));
+			window.location.href = './update.html';
+			break;
+		}
+	}
+}
+
+updateRenderNote();
+
+function updateRenderNote() {
+	const updateSaveBtn = document.querySelector('.update-save-btn');
+	console.log(updateSaveBtn);
+	let updateData = JSON.parse(localStorage.getItem('updateNoteData'));
+	// input value
+	titleEl.value = updateData.title;
+	categoryEl.value = updateData.category;
+	descriptionEl.value = updateData.description;
+
+	// update sava btn
+	updateSaveBtn.addEventListener('click', () => updateSave(updateData));
+}
+
+// window.location.href = '/';
+
+function updateSave(updateData) {
+	console.log(updateData);
+	const data = {
+		id: updateData.id,
+		title: titleEl.value,
+		category: categoryEl.value,
+		description: descriptionEl.value,
+	};
+	localStorage.setItem('updateNoteData', JSON.stringify(data));
+	// console.log(JSON.parse(localStorage.getItem('updateNoteData')));
+
+	let noteUpdateData = JSON.parse(localStorage.getItem('updateNoteData'));
+	let noteOriginData = JSON.parse(localStorage.getItem('notes'));
+	// console.log('update', noteUpdateData);
+	// console.log('notes', noteOriginData);
+
+	for (let i = 0; i < noteOriginData.length; i++) {
+		if (noteUpdateData.id === noteOriginData[i].id) {
+			noteOriginData[i] = noteUpdateData;
+			// console.log('change', noteOriginData);
+			// console.log('??', JSON.parse(localStorage.getItem('notes')));
+			localStorage.setItem('notes', JSON.stringify(noteOriginData));
+			console.log('??', JSON.parse(localStorage.getItem('notes')));
+			break;
+		}
+	}
+}
+
+// render();
 
 // menu toggle
 const menuOnBtn = document.querySelector('.bar');
