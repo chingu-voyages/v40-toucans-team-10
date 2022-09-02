@@ -16,7 +16,6 @@ if (!notes) {
 }
 
 function render() {
-	// eslint-disable-next-line no-console
 	console.log(notes);
 	mainContainerEl.innerHTML = `
 		<a class="add-note main-item" id="add-note" href="./add.html">
@@ -40,7 +39,6 @@ function render() {
 	// });
 	notes.forEach((note) => {
 		const { id, title, category, description } = note;
-		// eslint-disable-next-line no-console
 		mainContainerEl.innerHTML += `
 			<div class="main-item noteContent">
       <button class="deleteBtn" id="${id}" type="button">delete</button>
@@ -69,11 +67,13 @@ saveBtn?.addEventListener('click', () => {
 	const descriptionEl = document.getElementById('description');
 
 	const data = {
+		// eslint-disable-next-line no-use-before-define
 		id: randomIDGenerate(),
 		title: titleEl.value,
 		category: categoryEl.value,
 		description: descriptionEl.value,
 	};
+
 	notes.push(data);
 	localStorage.setItem('notes', JSON.stringify(notes));
 	window.location.href = '/';
@@ -83,14 +83,17 @@ saveBtn?.addEventListener('click', () => {
 function renderDeleteBtn() {
 	const deleteBtn = document.querySelectorAll('.deleteBtn');
 	console.log(deleteBtn);
+	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < deleteBtn.length; i++) {
+		// eslint-disable-next-line no-use-before-define
 		deleteBtn[i].addEventListener('click', (e) => deleteNote(e));
 	}
 }
 
 function deleteNote(e) {
-	let themeId = e.target.id;
+	const themeId = e.target.id;
 	console.log(themeId);
+	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
 			// console.log(notes[i]);
@@ -135,35 +138,35 @@ questionsArray.forEach((question) =>
 // Try to store the theme in local storage,
 // then access it
 
-const themeData = {
-	theme1: {
+const themeData = [
+	{
 		bgColor: '#FFFFFE',
 		fontColor: '#272343',
 		btnColor: '#FFD803',
 	},
-	theme2: {
+	{
 		bgColor: '#FFC0AD',
 		fontColor: '#271C19',
 		btnColor: '#E78FB3',
 	},
-	theme3: {
+	{
 		bgColor: '#B8C1EC',
 		fontColor: '#121629',
 		btnColor: '#EEBBC3',
 	},
-	theme4: {
+	{
 		bgColor: '#FEC7D7',
-		fontColor: '#FEC7D7',
+		fontColor: '#000000',
 		btnColor: '#A786DF',
 	},
-};
+];
 const themeSelectBtn = document.querySelectorAll('.btn');
 // if the theme is none:
 //   set the theme to the default
 // else:
 //   set the theme (e.g. bg, texts, etc.)
 
-// eslint-disable-next-line no-use-before-define
+// eslint-disable-next-line no-plusplus
 for (let i = 0; i < themeSelectBtn.length; i++) {
 	// eslint-disable-next-line no-use-before-define
 	themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
@@ -175,6 +178,7 @@ function setTheme(themeInfo) {
 		themeInfo.bgColor;
 	document.body.style.color = themeInfo.fontColor;
 	// button color
+	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < themeSelectBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
 		document.querySelectorAll('.btn')[i].style.backgroundColor =
@@ -187,7 +191,7 @@ function changeTheme(e) {
 	const themeId = e.target.id;
 
 	// class change
-	// eslint-disable-next-line no-use-before-define
+	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < themeSelectBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
 		themeSelectBtn[i].classList.remove('themecheck');
@@ -197,18 +201,29 @@ function changeTheme(e) {
 	themeSelectBtn[themeId - 1].innerText = 'Current theme';
 
 	// theme change
-	if (themeId === '1') {
-		setTheme(themeData.theme1);
-	} else if (themeId === '2') {
-		setTheme(themeData.theme2);
-	} else if (themeId === '3') {
-		setTheme(themeData.theme3);
-	} else {
-		setTheme(themeData.theme4);
+	switch (themeId) {
+		case '1':
+			setTheme(themeData[0]);
+			break;
+		case '2':
+			setTheme(themeData[1]);
+			break;
+		case '3':
+			setTheme(themeData[2]);
+			break;
+		case '4':
+			setTheme(themeData[3]);
+			break;
+		default:
+			setTheme(themeData[0]);
 	}
 }
 
-// random ID
+/**
+ *	@function randomIDGenerate
+ *  @return {string} it returns generated random ID
+ */
 function randomIDGenerate() {
+	// eslint-disable-next-line prefer-template
 	return '_' + Math.random().toString(36).substr(2, 9);
 }
