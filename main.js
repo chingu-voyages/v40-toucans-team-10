@@ -50,7 +50,6 @@ function render() {
 			</div>
 		`;
 	});
-	// eslint-disable-next-line no-use-before-define
 	renderDeleteBtn();
 }
 
@@ -97,10 +96,10 @@ function deleteNote(e) {
 	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
-			console.log(notes[i]);
+			// console.log(notes[i]);
 			notes.splice(i, 1);
 			console.log(notes);
-			// localStorage.setItem('notes', JSON.stringify(notes));
+			localStorage.setItem('notes', JSON.stringify(notes));
 			break;
 		}
 	}
