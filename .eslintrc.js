@@ -22,5 +22,6 @@ module.exports = {
 				endOfLine: 'auto',
 			},
 		],
+		'no-console': 'off',
 	},
 };
