@@ -52,7 +52,7 @@ function render() {
 			</div>
 		`;
 	});
-  renderDeleteBtn();
+	renderDeleteBtn();
 }
 
 if (window.location.pathname === '/') {
@@ -93,10 +93,10 @@ function deleteNote(e) {
 	console.log(themeId);
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
-			console.log(notes[i]);
+			// console.log(notes[i]);
 			notes.splice(i, 1);
 			console.log(notes);
-			// localStorage.setItem('notes', JSON.stringify(notes));
+			localStorage.setItem('notes', JSON.stringify(notes));
 			break;
 		}
 	}
