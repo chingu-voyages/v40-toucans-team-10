@@ -41,8 +41,8 @@ function render() {
 		const { id, title, category, description } = note;
 		mainContainerEl.innerHTML += `
 			<div class="main-item noteContent">
-      <button class="deleteBtn" id="${id}" type="button">delete</button>
-      <button class="updateBtn" id="${id}" type="button">update</button>
+      <button class="deleteBtn" id="${id}" type="button">Delete</button>
+      <button class="updateBtn" id="${id}" type="button">Update</button>
 				<div class="note-title">
 					<h1 class="">${title}</h1>
 				</div>
