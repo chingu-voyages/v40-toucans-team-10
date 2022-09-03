@@ -69,7 +69,6 @@ saveBtn?.addEventListener('click', () => {
 	// const titleEl = document.getElementById('title');
 	// const categoryEl = document.getElementById('category');
 	// const descriptionEl = document.getElementById('description');
-
 	const data = {
 		// eslint-disable-next-line no-use-before-define
 		id: randomIDGenerate(),
@@ -135,7 +134,11 @@ function updateNoteBtn(e) {
 	}
 }
 
-updateRenderNote();
+// if localStorage has updateNoteData
+if (localStorage.getItem('updateNoteData')) {
+	updateRenderNote();
+}
+// updateRenderNote();
 
 function updateRenderNote() {
 	const updateSaveBtn = document.querySelector('.update-save-btn');
@@ -150,6 +153,7 @@ function updateRenderNote() {
 		// update sava btn
 		updateSaveBtn.addEventListener('click', () => updateSave(updateData));
 	}
+	// localStorage.removeItem('updateNoteData');
 }
 
 // window.location.href = '/';
@@ -175,12 +179,9 @@ function updateSave(updateData) {
 		if (noteUpdateData.id === noteOriginData[i].id) {
 			noteOriginData[i] = noteUpdateData;
 			// console.log('change', noteOriginData);
-			// console.log('??', JSON.parse(localStorage.getItem('notes')));
+			// console.log(JSON.parse(localStorage.getItem('notes')));
 			localStorage.setItem('notes', JSON.stringify(noteOriginData));
 			localStorage.removeItem('updateNoteData');
-
-			console.log('??', JSON.parse(localStorage.getItem('notes')));
-
 			break;
 		}
 	}
