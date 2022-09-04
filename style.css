@@ -176,7 +176,8 @@ nav {
   transition: background-color 100ms ease-in;
 }
 
-.save-btn {
+.save-btn,
+.update-save-btn {
 	padding: 1em 0em;
 	min-height: 5em;
 	align-self: center;
@@ -384,6 +385,7 @@ footer {
 	/* footer */
 	footer {
 		display: block;
+    font-size: 1.15em;
 		height: 20vh;
 		padding: 2em;
 		border-top: 1px solid #000;
@@ -394,5 +396,6 @@ footer {
     grid-template-columns: 1fr 1fr;
     max-width: 1200px;
   }
+
 }
 
