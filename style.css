@@ -133,7 +133,7 @@ nav {
 	width: 100%;
 	border: 1px solid #000;
 	border-radius: 8px;
-	padding: 1em 1em;
+	padding: 2em 1em;
 	overflow: hidden;
 	margin-bottom: 20px;
   box-shadow: 0px 2px 0px #000000;
@@ -212,7 +212,7 @@ textarea {
 	font-family: inherit;
 	font-size: 2rem;
 	width: 100%;
-	padding: 1em 1em;
+	padding: 1em 2.25em;
 	margin: 0.25em;
 	resize: none;
 }
