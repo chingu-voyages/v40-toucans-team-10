@@ -65,7 +65,9 @@ saveBtn?.addEventListener('click', () => {
 	window.location.href = '/';
 });
 
-// delete note
+/**
+ * It renders the delete button
+ */
 function renderDeleteBtn() {
 	const deleteBtn = document.querySelectorAll('.deleteBtn');
 	console.log(deleteBtn);
@@ -76,6 +78,11 @@ function renderDeleteBtn() {
 	}
 }
 
+/**
+ * It deletes the note, based on the ID given
+ *
+ * @param {HTMLElement} e
+ */
 function deleteNote(e) {
 	const themeId = e.target.id;
 	console.log(themeId);
@@ -89,8 +96,9 @@ function deleteNote(e) {
 	}
 	render();
 }
-
-// update note
+/**
+ * It renders the update button
+ */
 function renderUpdateBtn() {
 	const updateBtn = document.querySelectorAll('.updateBtn');
 	console.log(updateBtn);
@@ -98,7 +106,11 @@ function renderUpdateBtn() {
 		updateBtn[i].addEventListener('click', (e) => updateNoteBtn(e));
 	}
 }
-
+/**
+ * It redirects the user to "./update.html" whenever it has clicked
+ *
+ * @param {HTMLElement} e
+ */
 function updateNoteBtn(e) {
 	const themeId = e.target.id;
 	console.log(themeId);
@@ -118,8 +130,9 @@ function updateNoteBtn(e) {
 if (localStorage.getItem('updateNoteData')) {
 	updateRenderNote();
 }
-// updateRenderNote();
-
+/**
+ * It renders the note to the DOM, to edit it by the user
+ */
 function updateRenderNote() {
 	const updateSaveBtn = document.querySelector('.update-save-btn');
 	console.log(updateSaveBtn);
@@ -138,7 +151,11 @@ function updateRenderNote() {
 
 // window.location.href = '/';
 
-// update save
+/**
+ * It saves the updated note
+ *
+ * @param {Object} updateData
+ */
 function updateSave(updateData) {
 	console.log(updateData);
 	const data = {
@@ -166,7 +183,6 @@ function updateSave(updateData) {
 		}
 	}
 }
-// render();
 
 // menu toggle
 const menuOnBtn = document.querySelector('.bar');
@@ -224,6 +240,7 @@ const themeData = [
 const themeSelectBtn = document.querySelectorAll('.btn');
 
 const themeNum = parseInt(localStorage.getItem('theme'), 10);
+// PSEUDOCODE:
 // if the theme is none:
 //   set the theme to the default
 // else:
@@ -236,7 +253,12 @@ if (window.location.pathname === '/theme.html') {
 		);
 	}
 }
-
+/**
+ * Sets the theme to the whole page
+ *
+ * @function setTheme
+ * @param {Object} themeInfo
+ */
 function setTheme(themeInfo) {
 	document.body.style.backgroundColor = themeInfo.bgColor;
 	document.querySelector('.nav-container').style.backgroundColor =
@@ -254,7 +276,11 @@ function setTheme(themeInfo) {
 		notesBtn.style.backgroundColor = themeInfo.btnColor;
 	});
 }
-
+/**
+ * It changes the button status and set the theme
+ *
+ * @param {string} themeId
+ */
 function changeTheme(themeId) {
 	// class change
 	if (
@@ -291,6 +317,8 @@ function changeTheme(themeId) {
 }
 
 /**
+ * It generates a random ID that can be used for editing the note
+ *
  *	@function randomIDGenerate
  *  @return {string} it returns generated random ID
  */
