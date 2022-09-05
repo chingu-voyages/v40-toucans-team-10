@@ -23,5 +23,7 @@ module.exports = {
 			},
 		],
 		'no-console': 'off',
+		'no-plusplus': 'off',
+		'no-use-before-define': 'off',
 	},
 };

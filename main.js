@@ -2,8 +2,6 @@ import './style.css';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
-// Resolve User story #1 in Epic: CRUD (w/ some bugs)
-
 // Add/save/read notes variables
 const saveBtn = document.querySelector('.save-btn');
 const mainContainerEl = document.querySelector('.main-container');
@@ -26,17 +24,6 @@ function render() {
       </svg>
 		</a>
 	`;
-
-	/*
-		Plan: Not to create another site (in forms), this is the only remnant of it
-	 */
-	// eslint-disable-next-line no-console
-	// console.log(document.getElementById('add-note'));
-	// document.getElementById('add-note').addEventListener('mouseover', () => {
-	// hover
-	// eslint-disable-next-line no-console
-	// console.log('hover');
-	// });
 	notes.forEach((note) => {
 		const { id, title, category, description } = note;
 		mainContainerEl.innerHTML += `
@@ -66,11 +53,7 @@ const categoryEl = document.getElementById('category');
 const descriptionEl = document.getElementById('description');
 // process the data and save it in local storage
 saveBtn?.addEventListener('click', () => {
-	// const titleEl = document.getElementById('title');
-	// const categoryEl = document.getElementById('category');
-	// const descriptionEl = document.getElementById('description');
 	const data = {
-		// eslint-disable-next-line no-use-before-define
 		id: randomIDGenerate(),
 		title: titleEl.value,
 		category: categoryEl.value,
@@ -82,7 +65,9 @@ saveBtn?.addEventListener('click', () => {
 	window.location.href = '/';
 });
 
-// delete note
+/**
+ * It renders the delete button
+ */
 function renderDeleteBtn() {
 	const deleteBtn = document.querySelectorAll('.deleteBtn');
 	console.log(deleteBtn);
@@ -93,24 +78,27 @@ function renderDeleteBtn() {
 	}
 }
 
+/**
+ * It deletes the note, based on the ID given
+ *
+ * @param {HTMLElement} e
+ */
 function deleteNote(e) {
 	const themeId = e.target.id;
 	console.log(themeId);
 	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
-			// console.log(notes[i]);
 			notes.splice(i, 1);
-			// console.log(notes);
 			localStorage.setItem('notes', JSON.stringify(notes));
 			break;
 		}
 	}
-	// console.log(notes);
 	render();
 }
-
-// update note
+/**
+ * It renders the update button
+ */
 function renderUpdateBtn() {
 	const updateBtn = document.querySelectorAll('.updateBtn');
 	console.log(updateBtn);
@@ -118,9 +106,13 @@ function renderUpdateBtn() {
 		updateBtn[i].addEventListener('click', (e) => updateNoteBtn(e));
 	}
 }
-
+/**
+ * It redirects the user to "./update.html" whenever it has clicked
+ *
+ * @param {HTMLElement} e
+ */
 function updateNoteBtn(e) {
-	let themeId = e.target.id;
+	const themeId = e.target.id;
 	console.log(themeId);
 
 	for (let i = 0; i < notes.length; i++) {
@@ -138,12 +130,13 @@ function updateNoteBtn(e) {
 if (localStorage.getItem('updateNoteData')) {
 	updateRenderNote();
 }
-// updateRenderNote();
-
+/**
+ * It renders the note to the DOM, to edit it by the user
+ */
 function updateRenderNote() {
 	const updateSaveBtn = document.querySelector('.update-save-btn');
 	console.log(updateSaveBtn);
-	let updateData = JSON.parse(localStorage.getItem('updateNoteData'));
+	const updateData = JSON.parse(localStorage.getItem('updateNoteData'));
 	// input value
 	if (updateData) {
 		titleEl.value = updateData.title;
@@ -158,7 +151,11 @@ function updateRenderNote() {
 
 // window.location.href = '/';
 
-// update save
+/**
+ * It saves the updated note
+ *
+ * @param {Object} updateData
+ */
 function updateSave(updateData) {
 	console.log(updateData);
 	const data = {
@@ -170,8 +167,8 @@ function updateSave(updateData) {
 	localStorage.setItem('updateNoteData', JSON.stringify(data));
 	// console.log(JSON.parse(localStorage.getItem('updateNoteData')));
 
-	let noteUpdateData = JSON.parse(localStorage.getItem('updateNoteData'));
-	let noteOriginData = JSON.parse(localStorage.getItem('notes'));
+	const noteUpdateData = JSON.parse(localStorage.getItem('updateNoteData'));
+	const noteOriginData = JSON.parse(localStorage.getItem('notes'));
 	// console.log('update', noteUpdateData);
 	// console.log('notes', noteOriginData);
 
@@ -186,7 +183,6 @@ function updateSave(updateData) {
 		}
 	}
 }
-// render();
 
 // menu toggle
 const menuOnBtn = document.querySelector('.bar');
@@ -242,46 +238,66 @@ const themeData = [
 	},
 ];
 const themeSelectBtn = document.querySelectorAll('.btn');
+
+const themeNum = parseInt(localStorage.getItem('theme'), 10);
+// PSEUDOCODE:
 // if the theme is none:
 //   set the theme to the default
 // else:
 //   set the theme (e.g. bg, texts, etc.)
-
-// eslint-disable-next-line no-plusplus
-for (let i = 0; i < themeSelectBtn.length; i++) {
-	// eslint-disable-next-line no-use-before-define
-	themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
+changeTheme(Number.isNaN(themeNum) ? 0 : `${themeNum}`);
+if (window.location.pathname === '/theme.html') {
+	for (let i = 0; i < themeSelectBtn.length; i++) {
+		themeSelectBtn[i].addEventListener('click', (e) =>
+			changeTheme(e.target.id)
+		);
+	}
 }
-
+/**
+ * Sets the theme to the whole page
+ *
+ * @function setTheme
+ * @param {Object} themeInfo
+ */
 function setTheme(themeInfo) {
 	document.body.style.backgroundColor = themeInfo.bgColor;
 	document.querySelector('.nav-container').style.backgroundColor =
 		themeInfo.bgColor;
 	document.body.style.color = themeInfo.fontColor;
 	// button color
-	// eslint-disable-next-line no-plusplus
-	for (let i = 0; i < themeSelectBtn.length; i++) {
-		// eslint-disable-next-line no-use-before-define
-		document.querySelectorAll('.btn')[i].style.backgroundColor =
-			themeInfo.btnColor;
+	if (themeSelectBtn.length) {
+		for (let i = 0; i < themeSelectBtn.length; i++) {
+			themeSelectBtn[i].style.backgroundColor = themeInfo.btnColor;
+		}
 	}
+	const notesBtns = document.querySelectorAll('.updateBtn, .deleteBtn');
+	notesBtns.forEach((notesBtn) => {
+		// eslint-disable-next-line no-param-reassign
+		notesBtn.style.backgroundColor = themeInfo.btnColor;
+	});
 }
-
-function changeTheme(e) {
-	// console.log(e.target.id);
-	const themeId = e.target.id;
-
+/**
+ * It changes the button status and set the theme
+ *
+ * @param {string} themeId
+ */
+function changeTheme(themeId) {
 	// class change
-	// eslint-disable-next-line no-plusplus
-	for (let i = 0; i < themeSelectBtn.length; i++) {
-		// eslint-disable-next-line no-use-before-define
-		themeSelectBtn[i].classList.remove('themecheck');
-		themeSelectBtn[i].innerText = 'Set theme as default';
+	if (
+		themeSelectBtn.length &&
+		window.location.pathname === '/theme.html' &&
+		themeId > 0
+	) {
+		for (let i = 0; i < themeSelectBtn.length; i++) {
+			themeSelectBtn[i].classList.remove('themecheck');
+			themeSelectBtn[i].innerText = 'Set theme as default';
+		}
+		themeSelectBtn[themeId - 1].classList.add('themecheck');
+		themeSelectBtn[themeId - 1].innerText = 'Current theme';
 	}
-	themeSelectBtn[themeId - 1].classList.add('themecheck');
-	themeSelectBtn[themeId - 1].innerText = 'Current theme';
 
 	// theme change
+	localStorage.setItem('theme', themeId);
 	switch (themeId) {
 		case '1':
 			setTheme(themeData[0]);
@@ -301,10 +317,12 @@ function changeTheme(e) {
 }
 
 /**
+ * It generates a random ID that can be used for editing the note
+ *
  *	@function randomIDGenerate
  *  @return {string} it returns generated random ID
  */
 function randomIDGenerate() {
 	// eslint-disable-next-line prefer-template
-	return '_' + Math.random().toString(36).substr(2, 9);
+	return '_' + Math.random().toString(36);
 }
