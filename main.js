@@ -247,7 +247,7 @@ const themeSelectBtn = document.querySelectorAll('.btn');
 // else:
 //   set the theme (e.g. bg, texts, etc.)
 
-if (window.length.href === '/theme.html') {
+if (window.length.pathname === '/theme.html') {
 	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < themeSelectBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
