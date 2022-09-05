@@ -247,10 +247,12 @@ const themeSelectBtn = document.querySelectorAll('.btn');
 // else:
 //   set the theme (e.g. bg, texts, etc.)
 
-// eslint-disable-next-line no-plusplus
-for (let i = 0; i < themeSelectBtn.length; i++) {
-	// eslint-disable-next-line no-use-before-define
-	themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
+if (window.length.href === '/theme.html') {
+	// eslint-disable-next-line no-plusplus
+	for (let i = 0; i < themeSelectBtn.length; i++) {
+		// eslint-disable-next-line no-use-before-define
+		themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
+	}
 }
 
 function setTheme(themeInfo) {
