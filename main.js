@@ -2,8 +2,6 @@ import './style.css';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
-// Resolve User story #1 in Epic: CRUD (w/ some bugs)
-
 // Add/save/read notes variables
 const saveBtn = document.querySelector('.save-btn');
 const mainContainerEl = document.querySelector('.main-container');
@@ -26,17 +24,6 @@ function render() {
       </svg>
 		</a>
 	`;
-
-	/*
-		Plan: Not to create another site (in forms), this is the only remnant of it
-	 */
-	// eslint-disable-next-line no-console
-	// console.log(document.getElementById('add-note'));
-	// document.getElementById('add-note').addEventListener('mouseover', () => {
-	// hover
-	// eslint-disable-next-line no-console
-	// console.log('hover');
-	// });
 	notes.forEach((note) => {
 		const { id, title, category, description } = note;
 		mainContainerEl.innerHTML += `
@@ -66,11 +53,7 @@ const categoryEl = document.getElementById('category');
 const descriptionEl = document.getElementById('description');
 // process the data and save it in local storage
 saveBtn?.addEventListener('click', () => {
-	// const titleEl = document.getElementById('title');
-	// const categoryEl = document.getElementById('category');
-	// const descriptionEl = document.getElementById('description');
 	const data = {
-		// eslint-disable-next-line no-use-before-define
 		id: randomIDGenerate(),
 		title: titleEl.value,
 		category: categoryEl.value,
@@ -99,14 +82,11 @@ function deleteNote(e) {
 	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
-			// console.log(notes[i]);
 			notes.splice(i, 1);
-			// console.log(notes);
 			localStorage.setItem('notes', JSON.stringify(notes));
 			break;
 		}
 	}
-	// console.log(notes);
 	render();
 }
 
@@ -250,9 +230,7 @@ const themeNum = parseInt(localStorage.getItem('theme'), 10);
 //   set the theme (e.g. bg, texts, etc.)
 changeTheme(Number.isNaN(themeNum) ? 0 : `${themeNum}`);
 if (window.location.pathname === '/theme.html') {
-	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < themeSelectBtn.length; i++) {
-		// eslint-disable-next-line no-use-before-define
 		themeSelectBtn[i].addEventListener('click', (e) =>
 			changeTheme(e.target.id)
 		);
@@ -265,10 +243,8 @@ function setTheme(themeInfo) {
 		themeInfo.bgColor;
 	document.body.style.color = themeInfo.fontColor;
 	// button color
-	// eslint-disable-next-line no-plusplus
 	if (themeSelectBtn.length) {
 		for (let i = 0; i < themeSelectBtn.length; i++) {
-			// eslint-disable-next-line no-use-before-define
 			themeSelectBtn[i].style.backgroundColor = themeInfo.btnColor;
 		}
 	}
@@ -281,14 +257,12 @@ function setTheme(themeInfo) {
 
 function changeTheme(themeId) {
 	// class change
-	// eslint-disable-next-line no-plusplus
 	if (
 		themeSelectBtn.length &&
 		window.location.pathname === '/theme.html' &&
 		themeId > 0
 	) {
 		for (let i = 0; i < themeSelectBtn.length; i++) {
-			// eslint-disable-next-line no-use-before-define
 			themeSelectBtn[i].classList.remove('themecheck');
 			themeSelectBtn[i].innerText = 'Set theme as default';
 		}
