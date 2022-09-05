@@ -242,16 +242,20 @@ const themeData = [
 	},
 ];
 const themeSelectBtn = document.querySelectorAll('.btn');
+
+const themeNum = parseInt(localStorage.getItem('theme'), 10);
 // if the theme is none:
 //   set the theme to the default
 // else:
 //   set the theme (e.g. bg, texts, etc.)
-
+changeTheme(Number.isNaN(themeNum) ? 0 : `${themeNum}`);
 if (window.location.pathname === '/theme.html') {
 	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < themeSelectBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
-		themeSelectBtn[i].addEventListener('click', (e) => changeTheme(e));
+		themeSelectBtn[i].addEventListener('click', (e) =>
+			changeTheme(e.target.id)
+		);
 	}
 }
 
@@ -262,28 +266,38 @@ function setTheme(themeInfo) {
 	document.body.style.color = themeInfo.fontColor;
 	// button color
 	// eslint-disable-next-line no-plusplus
-	for (let i = 0; i < themeSelectBtn.length; i++) {
-		// eslint-disable-next-line no-use-before-define
-		document.querySelectorAll('.btn')[i].style.backgroundColor =
-			themeInfo.btnColor;
+	if (themeSelectBtn.length) {
+		for (let i = 0; i < themeSelectBtn.length; i++) {
+			// eslint-disable-next-line no-use-before-define
+			themeSelectBtn[i].style.backgroundColor = themeInfo.btnColor;
+		}
 	}
+	const notesBtns = document.querySelectorAll('.updateBtn, .deleteBtn');
+	notesBtns.forEach((notesBtn) => {
+		// eslint-disable-next-line no-param-reassign
+		notesBtn.style.backgroundColor = themeInfo.btnColor;
+	});
 }
 
-function changeTheme(e) {
-	// console.log(e.target.id);
-	const themeId = e.target.id;
-
+function changeTheme(themeId) {
 	// class change
 	// eslint-disable-next-line no-plusplus
-	for (let i = 0; i < themeSelectBtn.length; i++) {
-		// eslint-disable-next-line no-use-before-define
-		themeSelectBtn[i].classList.remove('themecheck');
-		themeSelectBtn[i].innerText = 'Set theme as default';
+	if (
+		themeSelectBtn.length &&
+		window.location.pathname === '/theme.html' &&
+		themeId > 0
+	) {
+		for (let i = 0; i < themeSelectBtn.length; i++) {
+			// eslint-disable-next-line no-use-before-define
+			themeSelectBtn[i].classList.remove('themecheck');
+			themeSelectBtn[i].innerText = 'Set theme as default';
+		}
+		themeSelectBtn[themeId - 1].classList.add('themecheck');
+		themeSelectBtn[themeId - 1].innerText = 'Current theme';
 	}
-	themeSelectBtn[themeId - 1].classList.add('themecheck');
-	themeSelectBtn[themeId - 1].innerText = 'Current theme';
 
 	// theme change
+	localStorage.setItem('theme', themeId);
 	switch (themeId) {
 		case '1':
 			setTheme(themeData[0]);
