@@ -120,7 +120,7 @@ function renderUpdateBtn() {
 }
 
 function updateNoteBtn(e) {
-	let themeId = e.target.id;
+	const themeId = e.target.id;
 	console.log(themeId);
 
 	for (let i = 0; i < notes.length; i++) {
@@ -143,7 +143,7 @@ if (localStorage.getItem('updateNoteData')) {
 function updateRenderNote() {
 	const updateSaveBtn = document.querySelector('.update-save-btn');
 	console.log(updateSaveBtn);
-	let updateData = JSON.parse(localStorage.getItem('updateNoteData'));
+	const updateData = JSON.parse(localStorage.getItem('updateNoteData'));
 	// input value
 	if (updateData) {
 		titleEl.value = updateData.title;
@@ -170,8 +170,8 @@ function updateSave(updateData) {
 	localStorage.setItem('updateNoteData', JSON.stringify(data));
 	// console.log(JSON.parse(localStorage.getItem('updateNoteData')));
 
-	let noteUpdateData = JSON.parse(localStorage.getItem('updateNoteData'));
-	let noteOriginData = JSON.parse(localStorage.getItem('notes'));
+	const noteUpdateData = JSON.parse(localStorage.getItem('updateNoteData'));
+	const noteOriginData = JSON.parse(localStorage.getItem('notes'));
 	// console.log('update', noteUpdateData);
 	// console.log('notes', noteOriginData);
 
