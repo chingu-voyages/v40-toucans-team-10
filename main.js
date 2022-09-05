@@ -2,6 +2,32 @@ import './style.css';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
+// menu toggle
+const menuOnBtn = document.querySelector('.bar');
+const menuOffBtn = document.querySelector('.nav-off');
+const nav = document.querySelector('.nav-container');
+menuOnBtn.addEventListener('click', () => {
+	nav.classList.add('active');
+});
+menuOffBtn.addEventListener('click', () => {
+	nav.classList.remove('active');
+});
+
+// faq question toggle
+const questions = document.querySelectorAll('.question');
+const questionsArray = [...questions];
+
+questionsArray.forEach((question) =>
+	question.addEventListener('click', function accordion() {
+		const answerEl = this.nextElementSibling;
+		if (answerEl.className === 'hideAnswer') {
+			answerEl.className = 'showAnswer';
+		} else {
+			answerEl.className = 'hideAnswer';
+		}
+	})
+);
+
 // Add/save/read notes variables
 const saveBtn = document.querySelector('.save-btn');
 const mainContainerEl = document.querySelector('.main-container');
@@ -184,32 +210,6 @@ function updateSave(updateData) {
 	}
 }
 
-// menu toggle
-const menuOnBtn = document.querySelector('.bar');
-const menuOffBtn = document.querySelector('.nav-off');
-const nav = document.querySelector('.nav-container');
-menuOnBtn.addEventListener('click', () => {
-	nav.classList.add('active');
-});
-menuOffBtn.addEventListener('click', () => {
-	nav.classList.remove('active');
-});
-
-// faq question toggle
-const questions = document.querySelectorAll('.question');
-const questionsArray = [...questions];
-
-questionsArray.forEach((question) =>
-	question.addEventListener('click', function accordion() {
-		const answerEl = this.nextElementSibling;
-		if (answerEl.className === 'hideAnswer') {
-			answerEl.className = 'showAnswer';
-		} else {
-			answerEl.className = 'hideAnswer';
-		}
-	})
-);
-
 // theme select
 
 // Try to store the theme in local storage,
@@ -275,6 +275,8 @@ function setTheme(themeInfo) {
 		// eslint-disable-next-line no-param-reassign
 		notesBtn.style.backgroundColor = themeInfo.btnColor;
 	});
+
+	console.log(notesBtns);
 }
 /**
  * It changes the button status and set the theme
