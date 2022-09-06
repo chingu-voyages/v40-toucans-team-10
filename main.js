@@ -152,8 +152,11 @@ function updateNoteBtn(e) {
 	}
 }
 
-// if localStorage has updateNoteData
-if (localStorage.getItem('updateNoteData')) {
+// if localStorage has updateNoteData and is really on update page
+if (
+	localStorage.getItem('updateNoteData') &&
+	window.location.pathname === '/update.html'
+) {
 	updateRenderNote();
 }
 /**
