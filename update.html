@@ -1,67 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Chingu Voyage 40 Toucans Team 10" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="https://user-images.githubusercontent.com/96860670/188673124-5b4059f2-9d7d-4661-a1be-2b80ad4c2ff6.png"
+		/>
+		<title>[Note](me)</title>
+	</head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="author" content="Chingu Voyage 40 Toucans Team 10" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>[Note](me)</title>
-</head>
-
-<body>
-  <header>
-    <nav>
-      <ul class="nav-container">
-        <li class="nav-item">
-          <a href="/" class="nav-link">[Note](me)</a>
-        </li>
-        <li class="nav-item active">
-          <a href="/" class="nav-link">My notes</a>
-        </li>
-        <li class="nav-item">
-          <a href="./faq.html" class="nav-link">FAQ</a>
-        </li>
-        <li class="nav-item">
-          <a href="./theme.html" class="nav-link">Theme</a>
-        </li>
-        <li class="nav-item">
-          <a href="./info.html" class="nav-link">Info</a>
-        </li>
-        <li class="nav-off">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20.8995 20.8995L1.10051 1.1005" stroke="black" stroke-linecap="round" />
-            <path d="M20.8995 1.1005L1.10049 20.8995" stroke="black" stroke-linecap="round" />
-          </svg>
-        </li>
-      </ul>
-    </nav>
-    <div class="mobile-header">
-      <h1>My note</h1>
-      <button class="bar">
-        <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1.36145 2.25H23.1205" stroke="black" stroke-linecap="round" />
-          <path d="M1.36145 11H23.1205" stroke="black" stroke-linecap="round" />
-          <path d="M1.36145 19.75H23.1205" stroke="black" stroke-linecap="round" />
-        </svg>
-      </button>
-    </div>
-  </header>
-  <main>
-    <section class="main-container">
-      <input type="text" class="main-item" id="title" />
-      <input type="text" class="main-item" id="category" />
-      <textarea class="main-item" id="description"></textarea>
-      <a href="/"><button class="btn update-save-btn">Update</button></a>
-    </section>
-  </main>
-  <footer>
-    <h2>Made by Toucans 10 of Chingu Voyage 40</h2>
-    <p>Anna - <a href="https://github.com/its-haanna" target="_blank">github</a></p>
-    <p>Lorenz - <a href="https://github.com/genelorenzSarmiento0408" target="_blank">github</a></p>
-    <p>Sukyung - <a href="https://github.com/sukyungdev" target="_blank">github</a></p>
-  </footer>
-  <script type="module" src="./main.js"></script>
-</body>
-
+	<body>
+		<header>
+			<nav>
+				<ul class="nav-container">
+					<li class="nav-item">
+						<a href="/" class="nav-link">[Note](me)</a>
+					</li>
+					<li class="nav-item active">
+						<a href="/" class="nav-link">My notes</a>
+					</li>
+					<li class="nav-item">
+						<a href="./faq.html" class="nav-link">FAQ</a>
+					</li>
+					<li class="nav-item">
+						<a href="./theme.html" class="nav-link">Theme</a>
+					</li>
+					<li class="nav-item">
+						<a href="./info.html" class="nav-link">Info</a>
+					</li>
+					<li class="nav-off">
+						<svg
+							width="22"
+							height="22"
+							viewBox="0 0 22 22"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M20.8995 20.8995L1.10051 1.1005"
+								stroke="black"
+								stroke-linecap="round"
+							/>
+							<path
+								d="M20.8995 1.1005L1.10049 20.8995"
+								stroke="black"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</li>
+				</ul>
+			</nav>
+			<div class="mobile-header">
+				<h1>My note</h1>
+				<button class="bar">
+					<svg
+						width="24"
+						height="22"
+						viewBox="0 0 24 22"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M1.36145 2.25H23.1205"
+							stroke="black"
+							stroke-linecap="round"
+						/>
+						<path
+							d="M1.36145 11H23.1205"
+							stroke="black"
+							stroke-linecap="round"
+						/>
+						<path
+							d="M1.36145 19.75H23.1205"
+							stroke="black"
+							stroke-linecap="round"
+						/>
+					</svg>
+				</button>
+			</div>
+		</header>
+		<main>
+			<section class="main-container">
+				<input type="text" class="main-item" id="title" placeholder="title" />
+				<input
+					type="text"
+					class="main-item"
+					id="category"
+					placeholder="category"
+				/>
+				<textarea
+					class="main-item"
+					id="description"
+					placeholder="description"
+				></textarea>
+				<a href="/"><button class="btn update-save-btn">Update</button></a>
+			</section>
+		</main>
+		<footer>
+			<h2>Made by Toucans 10 of Chingu Voyage 40</h2>
+			<p>
+				Anna -
+				<a href="https://github.com/its-haanna" target="_blank">github</a>
+			</p>
+			<p>
+				Lorenz -
+				<a href="https://github.com/genelorenzSarmiento0408" target="_blank"
+					>github</a
+				>
+			</p>
+			<p>
+				Sukyung -
+				<a href="https://github.com/sukyungdev" target="_blank">github</a>
+			</p>
+		</footer>
+		<script type="module" src="./main.js"></script>
+	</body>
 </html>
