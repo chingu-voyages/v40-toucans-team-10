@@ -178,8 +178,6 @@ function updateRenderNote() {
 	// localStorage.removeItem('updateNoteData');
 }
 
-// window.location.href = '/';
-
 /**
  * It saves the updated note
  *
@@ -294,10 +292,10 @@ function changeTheme(themeId) {
 		themeId > 0
 	) {
 		for (let i = 0; i < themeSelectBtn.length; i++) {
-			themeSelectBtn[i].classList.remove('themecheck');
+			// themeSelectBtn[i].classList.remove('themecheck');
 			themeSelectBtn[i].innerText = 'Set theme as default';
 		}
-		themeSelectBtn[themeId - 1].classList.add('themecheck');
+		// themeSelectBtn[themeId - 1].classList.add('themecheck');
 		themeSelectBtn[themeId - 1].innerText = 'Current theme';
 	}
 
