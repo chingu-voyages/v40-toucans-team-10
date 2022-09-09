@@ -87,6 +87,7 @@ nav {
 	padding: 0.65em;
 	border: 1px solid var(--dark);
 	border-radius: 0.5em;
+  background: #fff;
 }
 
 .nav-item::marker {
@@ -107,6 +108,10 @@ nav {
 	right: 38px;
 }
 
+.logo-txt {
+  font-weight: 600;
+}
+
 /* mobile-header */
 .mobile-header {
 	margin: 0 1em;
@@ -114,6 +119,10 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.mobile-header-h2 {
+  margin-top: 5px;
 }
 
 /* bar */
@@ -355,6 +364,7 @@ footer {
 		border-radius: 0;
 		padding: 1em;
 		flex: 1;
+    background: unset;
 	}
 	.active {
 		border-bottom: 2px solid black;
