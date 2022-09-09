@@ -130,7 +130,7 @@ nav {
 }
 
 .main-item {
-	width: 100%;
+  background: #fff;
 	border: 1px solid #000;
 	border-radius: 8px;
 	padding: 2em 1em;
@@ -171,14 +171,14 @@ nav {
 	bottom: 10px;
 	right: 16px;
 	border: 1px solid #000;
-	border-radius: 8px;
+	border-radius: 4px;
 	box-shadow: 0px 2px 0px #000000;
   transition: background-color 100ms ease-in;
 }
 
 .save-btn,
 .update-save-btn {
-	padding: 1em 0em;
+	padding: 1em 1em;
 	min-height: 5em;
 	align-self: center;
 }
@@ -213,9 +213,10 @@ textarea {
 	font-family: inherit;
 	font-size: 2rem;
 	width: 100%;
-	padding: 1em 2.25em;
-	margin: 0.25em;
+	margin-bottom: 0.5em;
 	resize: none;
+  line-height: 1.2;
+  padding: 1em;
 }
 
 input::placeholder,
@@ -224,7 +225,7 @@ textarea::placeholder {
 }
 
 textarea {
-	min-width: 100%;
+  min-width: 100%;
 	min-height: 20em;
 }
 
@@ -245,7 +246,9 @@ footer {
 /* faq CSS */
 .faq-container {
   padding: 0 5rem;
-  align-self: flex-start;
+  align-self: center;
+  max-width: 800px;
+  width: 100%;
 }
 
 .question-container {
@@ -268,9 +271,15 @@ footer {
 
 .showAnswer {
   display: block;
+  max-width: 800px;
   margin-top: 1rem;
   margin-left: 1.5rem;
   font-size: 1.5em;
+  background-color: #fff;
+  padding: 1.5rem;
+  border: 1px solid #000;
+  border-radius: 8px;
+  box-shadow: 0px 2px 0px #000000;
 }
 
 /* info CSS */
@@ -297,6 +306,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: #fff;
 }
 
 .card-header {
@@ -355,6 +365,10 @@ footer {
 		display: none;
 	}
 
+  main {
+    margin-bottom: 100px;
+  }
+
 	.main-container {
 		width: 100%;
     max-width: 1200px;
@@ -386,9 +400,15 @@ footer {
 	footer {
 		display: block;
     font-size: 1.15em;
-		height: 20vh;
+		height: 120px;
 		padding: 2em;
 		border-top: 1px solid #000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: rgb(255,255,255);
 	}
 
   /* info CSS */
