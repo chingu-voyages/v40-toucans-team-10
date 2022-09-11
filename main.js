@@ -40,7 +40,6 @@ if (!notes) {
 }
 
 function render() {
-	console.log(notes);
 	mainContainerEl.innerHTML = `
 		<a class="add-note main-item" id="add-note" href="./add.html">
 			<svg alt="Add a note" width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +95,6 @@ saveBtn?.addEventListener('click', () => {
  */
 function renderDeleteBtn() {
 	const deleteBtn = document.querySelectorAll('.deleteBtn');
-	console.log(deleteBtn);
 	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < deleteBtn.length; i++) {
 		// eslint-disable-next-line no-use-before-define
@@ -111,7 +109,6 @@ function renderDeleteBtn() {
  */
 function deleteNote(e) {
 	const themeId = e.target.id;
-	console.log(themeId);
 	// eslint-disable-next-line no-plusplus
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
@@ -127,7 +124,6 @@ function deleteNote(e) {
  */
 function renderUpdateBtn() {
 	const updateBtn = document.querySelectorAll('.updateBtn');
-	console.log(updateBtn);
 	for (let i = 0; i < updateBtn.length; i++) {
 		updateBtn[i].addEventListener('click', (e) => updateNoteBtn(e));
 	}
@@ -139,12 +135,9 @@ function renderUpdateBtn() {
  */
 function updateNoteBtn(e) {
 	const themeId = e.target.id;
-	console.log(themeId);
 
 	for (let i = 0; i < notes.length; i++) {
 		if (themeId === notes[i].id) {
-			console.log(notes[i]);
-
 			localStorage.setItem('updateNoteData', JSON.stringify(notes[i]));
 			window.location.href = './update.html';
 			break;
@@ -164,7 +157,6 @@ if (
  */
 function updateRenderNote() {
 	const updateSaveBtn = document.querySelector('.update-save-btn');
-	console.log(updateSaveBtn);
 	const updateData = JSON.parse(localStorage.getItem('updateNoteData'));
 	// input value
 	if (updateData) {
@@ -175,7 +167,6 @@ function updateRenderNote() {
 		// update sava btn
 		updateSaveBtn.addEventListener('click', () => updateSave(updateData));
 	}
-	// localStorage.removeItem('updateNoteData');
 }
 
 /**
@@ -184,7 +175,6 @@ function updateRenderNote() {
  * @param {Object} updateData
  */
 function updateSave(updateData) {
-	console.log(updateData);
 	const data = {
 		id: updateData.id,
 		title: titleEl.value,
@@ -192,18 +182,13 @@ function updateSave(updateData) {
 		description: descriptionEl.value,
 	};
 	localStorage.setItem('updateNoteData', JSON.stringify(data));
-	// console.log(JSON.parse(localStorage.getItem('updateNoteData')));
 
 	const noteUpdateData = JSON.parse(localStorage.getItem('updateNoteData'));
 	const noteOriginData = JSON.parse(localStorage.getItem('notes'));
-	// console.log('update', noteUpdateData);
-	// console.log('notes', noteOriginData);
 
 	for (let i = 0; i < noteOriginData.length; i++) {
 		if (noteUpdateData.id === noteOriginData[i].id) {
 			noteOriginData[i] = noteUpdateData;
-			// console.log('change', noteOriginData);
-			// console.log(JSON.parse(localStorage.getItem('notes')));
 			localStorage.setItem('notes', JSON.stringify(noteOriginData));
 			localStorage.removeItem('updateNoteData');
 			break;
@@ -241,11 +226,6 @@ const themeData = [
 const themeSelectBtn = document.querySelectorAll('.btn');
 
 const themeNum = parseInt(localStorage.getItem('theme'), 10);
-// PSEUDOCODE:
-// if the theme is none:
-//   set the theme to the default
-// else:
-//   set the theme (e.g. bg, texts, etc.)
 changeTheme(Number.isNaN(themeNum) ? 0 : `${themeNum}`);
 if (window.location.pathname === '/theme.html') {
 	for (let i = 0; i < themeSelectBtn.length; i++) {
@@ -276,8 +256,6 @@ function setTheme(themeInfo) {
 		// eslint-disable-next-line no-param-reassign
 		notesBtn.style.backgroundColor = themeInfo.btnColor;
 	});
-
-	console.log(notesBtns);
 }
 /**
  * It changes the button status and set the theme
