@@ -118,7 +118,14 @@ function deleteNote(e) {
 		}
 	}
 	render();
+	renderTheme();
 }
+
+function renderTheme() {
+	const style = localStorage.getItem('theme');
+	changeTheme(style);
+}
+
 /**
  * It renders the update button
  */
