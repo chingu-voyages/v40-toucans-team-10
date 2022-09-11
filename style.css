@@ -39,17 +39,24 @@ button {
 ul,
 ol,
 li {
-	list-style: none;
+  list-style: none;
+}
+
+.main-item ul,
+.main-item ul li {
+  list-style-type: disc;
+	margin-left: 0.6rem;
+}
+
+.main-item ol,
+.main-item ol li {
+  list-style-type: decimal;
+  margin-left: 1rem;
 }
 
 a {
   color: #000;
 }
-
-/* h1,
-h2 {
-	font-weight: 400;
-} */
 
 /* navigation */
 nav {
@@ -82,7 +89,6 @@ nav {
 
 .nav-item {
 	font-size: 1em;
-	/* flex: 1; */
 	flex: 0;
 	padding: 0.65em;
 	border: 1px solid var(--dark);
@@ -163,16 +169,6 @@ nav {
 }
 
 /* buttons */
-
-/* theme button hover*/
-/* .main-container button:hover {
-  background-color: rgb(163, 228, 228);
-}
-
-.btn.themecheck  {
-  background-color: #ffd84a;
-} */
-
 .btn {
 	float: right;
 	width: 200px;
@@ -250,6 +246,14 @@ textarea {
 /* footer */
 footer {
 	display: none;
+}
+
+footer p {
+  font-size: 1.1em;
+}
+
+footer h2 {
+  margin-bottom: 0.5em;
 }
 
 /* faq CSS */
@@ -410,7 +414,7 @@ footer {
 	footer {
 		display: block;
     font-size: 1.15em;
-		height: 120px;
+		height: max-content;
 		padding: 2em;
 		border-top: 1px solid #000;
     position: fixed;
