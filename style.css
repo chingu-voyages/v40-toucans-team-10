@@ -246,10 +246,15 @@ textarea {
 /* footer */
 footer {
 	display: none;
+  text-align: right;
 }
 
 footer p {
   font-size: 1.1em;
+}
+
+footer p:last-child {
+  margin-top: 0.5em;
 }
 
 footer h2 {
