@@ -21,10 +21,10 @@
 					<li class="nav-item logo-txt">
 						<a href="/" class="nav-link">[Note](me)</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a href="/" class="nav-link">My notes</a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a href="./faq.html" class="nav-link">FAQ</a>
 					</li>
 					<li class="nav-item">
@@ -57,7 +57,7 @@
 			</nav>
 			<div class="mobile-header">
 				<h1><a href="/">[Note](me)</a></h1>
-				<h2 class="mobile-header-h2">FAQ</h2>
+				<h2 class="mobile-header-h2">Update a note</h2>
 				<button class="bar">
 					<svg
 						width="24"
@@ -86,55 +86,21 @@
 			</div>
 		</header>
 		<main>
-			<div class="faq-container">
-				<section class="question-container">
-					<h2 class="question">How can I wipe out all of my notes?</h2>
-					<p class="hideAnswer">
-						You can do that by clearing your browser's local storage.
-					</p>
-				</section>
-				<section class="question-container">
-					<h2 class="question">How are my notes stored?</h2>
-					<p class="hideAnswer">
-						Your browser stores your notes in the local storage.
-					</p>
-				</section>
-				<section class="question-container">
-					<h2 class="question">Why was this project made?</h2>
-					<p class="hideAnswer">
-						This project was made thanks to
-						<a href="https://www.chingu.io/" target="_blank">Chingu</a>. People
-						who worked on this project were selected by the Chingu's team and
-						became a team for the length of the Voyage 40 (6 weeks). You can
-						read more about the creators in the
-						<a href="/info.html">info tab</a>.
-					</p>
-				</section>
-				<section class="question-container">
-					<h2 class="question">What is Markdown?</h2>
-					<p class="hideAnswer">
-						Markdown is a lightweight markup language for creating formatted
-						text using a plain-text editor.
-					</p>
-				</section>
-				<section class="question-container">
-					<h2 class="question">How can I use Markdown for my notes?</h2>
-					<p class="hideAnswer">
-						Check out this
-						<a href="https://www.markdownguide.org/getting-started/"
-							>Markdown Guide</a
-						>
-						to learn more.
-					</p>
-				</section>
-				<section class="question-container">
-					<h2 class="question">How can I change the theme?</h2>
-					<p class="hideAnswer">
-						To change theme color, visit the
-						<a href="/theme.html">Theme tab.</a>
-					</p>
-				</section>
-			</div>
+			<section class="main-container">
+				<input type="text" class="main-item" id="title" placeholder="title" />
+				<input
+					type="text"
+					class="main-item"
+					id="category"
+					placeholder="category"
+				/>
+				<textarea
+					class="main-item"
+					id="description"
+					placeholder="description"
+				></textarea>
+				<a href="/"><button class="btn update-save-btn">Update</button></a>
+			</section>
 		</main>
 		<footer>
 			<h2>Made by</h2>

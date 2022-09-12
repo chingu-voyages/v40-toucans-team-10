@@ -16,5 +16,9 @@
 		"eslint-config-prettier": "^8.5.0",
 		"prettier": "^2.7.1",
 		"vite": "^2.9.15"
+	},
+	"dependencies": {
+		"dompurify": "^2.4.0",
+		"marked": "^4.1.0"
 	}
 }

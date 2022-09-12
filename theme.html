@@ -5,12 +5,22 @@
 		<meta name="author" content="Chingu Voyage 40 Toucans Team 10" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Vite App</title>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="https://user-images.githubusercontent.com/96860670/188673124-5b4059f2-9d7d-4661-a1be-2b80ad4c2ff6.png"
+		/>
+		<title>[Note](me)</title>
 	</head>
+
 	<body>
 		<header>
 			<nav>
 				<ul class="nav-container">
+					<li class="nav-item logo-txt">
+						<a href="/" class="nav-link">[Note](me)</a>
+					</li>
 					<li class="nav-item">
 						<a href="/" class="nav-link">My notes</a>
 					</li>
@@ -46,7 +56,8 @@
 				</ul>
 			</nav>
 			<div class="mobile-header">
-				<h1>My note</h1>
+				<h1><a href="/">[Note](me)</a></h1>
+				<h2 class="mobile-header-h2">Theme</h2>
 				<button class="bar">
 					<svg
 						width="24"
@@ -75,10 +86,10 @@
 			</div>
 		</header>
 		<main>
-			<section class="theme-container">
+			<section class="main-container">
 				<!-- theme 1 -->
-				<div class="theme-item themecheck">
-					<h2>Theme name1</h2>
+				<div class="main-item themecheck">
+					<h2>Sunny day</h2>
 					<div class="color-item">
 						<svg
 							width="576"
@@ -93,7 +104,7 @@
 								r="46.5"
 								fill="#FFFFFE"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="169"
@@ -101,7 +112,7 @@
 								r="46.5"
 								fill="#FFD803"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="288"
@@ -109,7 +120,7 @@
 								r="46.5"
 								fill="#272343"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="407"
@@ -117,7 +128,7 @@
 								r="46.5"
 								fill="#E3F6F5"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="526"
@@ -125,15 +136,15 @@
 								r="46.5"
 								fill="#BAE8E8"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 						</svg>
 					</div>
-					<button type="button" class="theme-btn">Current theme</button>
+					<button type="button" class="btn" id="1">Current theme</button>
 				</div>
 				<!-- theme 2 -->
-				<div class="theme-item">
-					<h2>Theme name2</h2>
+				<div class="main-item">
+					<h2>Sweet peach</h2>
 					<div class="color-item">
 						<svg
 							width="576"
@@ -148,7 +159,7 @@
 								r="46.5"
 								fill="#55423D"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="169"
@@ -156,7 +167,7 @@
 								r="46.5"
 								fill="#FFFFFE"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="288"
@@ -164,7 +175,7 @@
 								r="46.5"
 								fill="#FFC0AD"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="407"
@@ -172,7 +183,7 @@
 								r="46.5"
 								fill="#271C19"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="526"
@@ -180,17 +191,15 @@
 								r="46.5"
 								fill="#E78FB3"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 						</svg>
 					</div>
-					<button type="button" class="theme-btn themecheck">
-						Set theme as default
-					</button>
+					<button type="button" class="btn" id="2">Set theme as default</button>
 				</div>
 				<!-- theme 3 -->
-				<div class="theme-item">
-					<h2>Theme name3</h2>
+				<div class="main-item">
+					<h2>Wildberry cream</h2>
 					<div class="color-item">
 						<svg
 							width="576"
@@ -205,7 +214,7 @@
 								r="46.5"
 								fill="#232946"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="169"
@@ -213,7 +222,7 @@
 								r="46.5"
 								fill="#FFFFFE"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="288"
@@ -221,7 +230,7 @@
 								r="46.5"
 								fill="#B8C1EC"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="407"
@@ -229,7 +238,7 @@
 								r="46.5"
 								fill="#EEBBC3"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="526"
@@ -237,17 +246,15 @@
 								r="46.5"
 								fill="#121629"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 						</svg>
 					</div>
-					<button type="button" class="theme-btn themecheck">
-						Set theme as default
-					</button>
+					<button type="button" class="btn" id="3">Set theme as default</button>
 				</div>
 				<!-- theme4 -->
-				<div class="theme-item">
-					<h2>Theme name4</h2>
+				<div class="main-item">
+					<h2>Lavender night</h2>
 					<div class="color-item">
 						<svg
 							width="576"
@@ -262,7 +269,7 @@
 								r="46.5"
 								fill="#FEC7D7"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="169"
@@ -270,7 +277,7 @@
 								r="46.5"
 								fill="#0E172C"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="288"
@@ -278,7 +285,7 @@
 								r="46.5"
 								fill="#FFFFFE"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="407"
@@ -286,7 +293,7 @@
 								r="46.5"
 								fill="#D9D4E7"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 							<circle
 								cx="526"
@@ -294,23 +301,31 @@
 								r="46.5"
 								fill="#A786DF"
 								stroke="black"
-								stroke-width="7"
+								stroke-width="2"
 							/>
 						</svg>
 					</div>
-					<button type="button" class="theme-btn themecheck">
-						Set theme as default
-					</button>
+					<button type="button" class="btn" id="4">Set theme as default</button>
 				</div>
 			</section>
 		</main>
 		<footer>
-			<h2>Made by Toucans 10 of Chingu Voyage 40</h2>
-			<p>Anna - github, homepage</p>
-			<p>Lorenz - github, homepage</p>
-			<p>Sharmae - github, homepage</p>
-			<p>Steven - github, homepage</p>
-			<p>Sukyung - github, homepage</p>
+			<h2>Made by</h2>
+			<p>
+				Anna -
+				<a href="https://github.com/its-haanna" target="_blank">github</a>
+			</p>
+			<p>
+				Lorenz -
+				<a href="https://github.com/genelorenzSarmiento0408" target="_blank"
+					>github</a
+				>
+			</p>
+			<p>
+				Sukyung -
+				<a href="https://github.com/sukyungdev" target="_blank">github</a>
+			</p>
+			<p>of Chingu Voyage no. 40, 2022</p>
 		</footer>
 		<script type="module" src="./main.js"></script>
 	</body>
